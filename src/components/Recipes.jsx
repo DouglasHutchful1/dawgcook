@@ -35,17 +35,16 @@ const Recipes = () => {
         e.preventDefault(); 
         setQuery(inputValue); // Set query to the input value
         setLimit(30); // Reset limit when a new search is made
-        fetchRecipe(); // Trigger fetchRecipe on search
     };
 
     const showMore = () => {
         setLimit((prev) => prev + 10);
     };
 
-    // Fetch recipes when component mounts or when limit changes
+    // Fetch recipes when component mounts, query changes, or limit changes
     useEffect(() => {
-        fetchRecipe(); // Call fetchRecipe on initial load or limit change
-    }, [fetchRecipe, limit]);
+        fetchRecipe(); // Call fetchRecipe on initial load, query change, or limit change
+    }, [fetchRecipe, query, limit]);
 
     if (loading) {
         return <Loading />;
